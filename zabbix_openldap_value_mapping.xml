@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.4</version>
+    <date>2018-07-19T12:44:08Z</date>
+    <value_maps>
+        <value_map>
+            <name>LDAP cluster Value Mapping</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>LDAP Consumer Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>LDAP Provider Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>LDAP Provider &amp; Consumer Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>LDAP cluster Synced</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>

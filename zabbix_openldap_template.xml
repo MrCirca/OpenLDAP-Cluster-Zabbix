@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>3.4</version>
+    <date>2018-07-19T12:43:48Z</date>
+    <groups>
+        <group>
+            <name>Template LDAP</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template LDAP</template>
+            <name>Template LDAP</name>
+            <description/>
+            <groups>
+                <group>
+                    <name>Template LDAP</name>
+                </group>
+            </groups>
+            <applications/>
+            <items>
+                <item>
+                    <name>LDAP Cluster status</name>
+                    <type>0</type>
+                    <snmp_community/>
+                    <snmp_oid/>
+                    <key>ldap.clusterstatus[172.17.172.51]</key>
+                    <delay>30s</delay>
+                    <history>90d</history>
+                    <trends>365d</trends>
+                    <status>0</status>
+                    <value_type>3</value_type>
+                    <allowed_hosts/>
+                    <units/>
+                    <snmpv3_contextname/>
+                    <snmpv3_securityname/>
+                    <snmpv3_securitylevel>0</snmpv3_securitylevel>
+                    <snmpv3_authprotocol>0</snmpv3_authprotocol>
+                    <snmpv3_authpassphrase/>
+                    <snmpv3_privprotocol>0</snmpv3_privprotocol>
+                    <snmpv3_privpassphrase/>
+                    <params/>
+                    <ipmi_sensor/>
+                    <authtype>0</authtype>
+                    <username/>
+                    <password/>
+                    <publickey/>
+                    <privatekey/>
+                    <port/>
+                    <description/>
+                    <inventory_link>0</inventory_link>
+                    <applications/>
+                    <valuemap>
+                        <name>LDAP cluster Value Mapping</name>
+                    </valuemap>
+                    <logtimefmt/>
+                    <preprocessing/>
+                    <jmx_endpoint/>
+                    <master_item/>
+                </item>
+            </items>
+            <discovery_rules/>
+            <httptests/>
+            <macros>
+                <macro>
+                    <macro>{$BASE_DN}</macro>
+                    <value>&quot;dc=modulus,dc=gr&quot;</value>
+                </macro>
+                <macro>
+                    <macro>{$LDAP_HOST}</macro>
+                    <value>172.17.172.51</value>
+                </macro>
+            </macros>
+            <templates/>
+            <screens/>
+        </template>
+    </templates>
+    <triggers>
+        <trigger>
+            <expression>{Template LDAP:ldap.clusterstatus[172.17.172.51].last()}=1</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>LDAP Consumer Down</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template LDAP:ldap.clusterstatus[172.17.172.51].last()}=3</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>LDAP Provider &amp; Consumer Down</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+        <trigger>
+            <expression>{Template LDAP:ldap.clusterstatus[172.17.172.51].last()}=2</expression>
+            <recovery_mode>0</recovery_mode>
+            <recovery_expression/>
+            <name>LDAP Provider Down</name>
+            <correlation_mode>0</correlation_mode>
+            <correlation_tag/>
+            <url/>
+            <status>0</status>
+            <priority>2</priority>
+            <description/>
+            <type>0</type>
+            <manual_close>0</manual_close>
+            <dependencies/>
+            <tags/>
+        </trigger>
+    </triggers>
+    <value_maps>
+        <value_map>
+            <name>LDAP cluster Value Mapping</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>LDAP Consumer Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>LDAP Provider Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>LDAP Provider &amp; Consumer Down</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>LDAP cluster Synced</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
